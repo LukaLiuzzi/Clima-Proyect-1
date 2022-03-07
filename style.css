@@ -217,6 +217,14 @@
     padding: 8px 40px;
   }
 
+  .logginn{
+    display: flex;
+    justify-content: center;
+    float: right;
+    padding: 8px 25px;
+  }
+
+
   .modal-container{
      display: flex;
      background-color: rgba( 0, 0, 0, 0.3);
