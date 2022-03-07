@@ -38,12 +38,6 @@
   const email = document.getElementById('email');
   const password = document.getElementById('password');
 
-  const nombreUno = document.getElementById('nombreUno');
-  const apellidoUno = document.getElementById('apellidoUno');
-  const emailUno = document.getElementById('emailUno');
-  const passwordUno = document.getElementById('passwordUno');
-  const anioNacimientoUno = document.getElementById('anioNacimientoUno');
-
   form.addEventListener("submit", (e) =>{
     e.preventDefault();
     localStorage.setItem('nombreUsuario', form.children[0].value);
