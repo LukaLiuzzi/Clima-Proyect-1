@@ -40,45 +40,44 @@
 
   form.addEventListener("submit", (e) =>{
     e.preventDefault();
-    localStorage.setItem('nombreUsuario', form.children[0].value);
-    localStorage.setItem('apellidoUsuario', form.children[1].value);
-    localStorage.setItem('emailUsuario', form.children[2].value);
-    localStorage.setItem('passwordUsuario', form.children[3].value);
-    localStorage.setItem('anioNacimientoUsuario', form.children[4].value);
-    nameStorage = form.children[0].value;
-    lastNameStorage = form.children[1].value;
 
-    if (nombre && apellido && email && password && anioNacimiento) {
-      Swal.fire({
-        icon: 'error',
-        title: 'Oops...',
-        text: 'Algun campo se encuentra vacio.',
-      }) 
+    if (nombre !== "" && apellido !== "" && email !== "" && password !== "" && anioNacimiento !== "") {
+
+      localStorage.setItem('nombreUsuario', form.children[0].value);
+      localStorage.setItem('apellidoUsuario', form.children[1].value);
+      localStorage.setItem('emailUsuario', form.children[2].value);
+      localStorage.setItem('passwordUsuario', form.children[3].value);
+      localStorage.setItem('anioNacimientoUsuario', form.children[4].value);
+      nameStorage = form.children[0].value;
+      lastNameStorage = form.children[1].value;
+      const Toast = Swal.mixin({
+        toast: true,
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 1500,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+          toast.addEventListener('mouseenter', Swal.stopTimer)
+          toast.addEventListener('mouseleave', Swal.resumeTimer)
+        }
+      })
+      
+      Toast.fire({
+        icon: 'success',
+        title: 'Registrado con Éxito'
+      })
+
       }else{
-        const Toast = Swal.mixin({
-          toast: true,
-          position: 'top-end',
-          showConfirmButton: false,
-          timer: 1500,
-          timerProgressBar: true,
-          didOpen: (toast) => {
-            toast.addEventListener('mouseenter', Swal.stopTimer)
-            toast.addEventListener('mouseleave', Swal.resumeTimer)
-          }
-        })
-        
-        Toast.fire({
-          icon: 'success',
-          title: 'Registrado con Éxito'
-        })
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Algun campo se encuentra vacio.',
+        }) 
+
       }
 
       checkForm();
   })
-
-   send.onclick = () => {
-    modal_container.classList.remove("show");
-}
 
   const checkForm = () => {
     if (nameStorage && nameStorage !== 'null'){
